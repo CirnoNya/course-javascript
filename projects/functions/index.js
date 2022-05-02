@@ -51,7 +51,11 @@ console.log(result);
  Пример:
    returnFnResult(() => 'привет') вернет 'привет'
  */
-function returnFnResult(fn) {}
+function returnFnResult(fn) {
+  return fn();
+}
+
+console.log(returnFnResult);
 
 /*
  Задание 4:
@@ -69,7 +73,14 @@ function returnFnResult(fn) {}
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {}
+function returnCounter(number = 0) {
+  return function () {
+    return ++number;
+  };
+}
+
+const f = returnCounter(10);
+console.log(f());
 
 /*
  Задание 5 *:
@@ -80,7 +91,15 @@ function returnCounter(number) {}
  Пример:
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
-function returnArgumentsArray() {}
+function returnArgumentsArray(...args) {
+  const arr = [...args];
+
+  return arr;
+}
+
+const arr = returnArgumentsArray(1, 2, 3);
+
+console.log(arr);
 
 /*
  Задание 6 *:
@@ -98,6 +117,19 @@ function returnArgumentsArray() {}
    console.log(newSum()) выведет 6
  */
 function bindFunction(fn, ...args) {}
+// function bindFunction(fn, ...args) {
+//   function fn(...args) {}
+//   return fn();
+// }
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// var newSum = bindFunction(sum, 2, 4);
+
+// console.log(newSum());
+//сложно, не понял((
 
 export {
   returnFirstArgument,
