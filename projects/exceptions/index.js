@@ -21,11 +21,17 @@ function isAllTrue(array, fn) {
     throw new Error('fn is not a function');
   }
 
-  if (!Array.isArray(array) || !array.length) {
+  if (array.constructor !== Array || !array.length) {
     throw new Error('empty array');
   }
 
-  return array.every(fn);
+  for (const el of array) {
+    if (!fn(el)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 /*
@@ -49,13 +55,18 @@ function isSomeTrue(array, fn) {
     throw new Error('fn is not a function');
   }
 
-  if (!Array.isArray(array) || !array.length) {
+  if (array.constructor !== Array || !array.length) {
     throw new Error('empty array');
   }
 
-  return array.some(fn);
-}
+  for (const el of array) {
+    if (fn(el)) {
+      return true;
+    }
+  }
 
+  return false;
+}
 /*
  Задание 3:
 
