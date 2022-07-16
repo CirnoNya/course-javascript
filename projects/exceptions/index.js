@@ -25,13 +25,7 @@ function isAllTrue(array, fn) {
     throw new Error('empty array');
   }
 
-  for (const el of array) {
-    if (!fn(el)) {
-      return false;
-    }
-  }
-
-  return true;
+  return array.every(fn);
 }
 
 /*
@@ -59,13 +53,7 @@ function isSomeTrue(array, fn) {
     throw new Error('empty array');
   }
 
-  for (const el of array) {
-    if (fn(el)) {
-      return true;
-    }
-  }
-
-  return false;
+  return array.some(fn);
 }
 
 /*
